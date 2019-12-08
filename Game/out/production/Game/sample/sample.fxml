@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <SplitPane dividerPositions="0.10820895522388059" orientation="VERTICAL" prefHeight="361.0" prefWidth="374.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="38.0" layoutY="10.0" text="You:" />
+                  <Label layoutX="260.0" layoutY="10.0" text="Enemy:" />
+                  <TextField fx:id="yourHealth" editable="false" focusTraversable="false" layoutX="69.0" layoutY="6.0" prefHeight="25.0" prefWidth="31.0" text="15" />
+                  <TextField fx:id="enemyHealth" editable="false" focusTraversable="false" layoutX="307.0" layoutY="6.0" prefHeight="25.0" prefWidth="31.0" text="15" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="372.0" fx:id="pane">
+               <children>
+                  <ImageView fx:id="yourShip" fitHeight="68.0" fitWidth="91.0" layoutX="153.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Raiden_Fighting_Thunder_Mk_ii.jpg" />
+                     </image></ImageView>
+                  <ImageView fx:id="enemyShip" fitHeight="55.0" fitWidth="68.0" layoutX="159.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../Raiden_Fighting_Thunder_Mk_ii.jpg" />
+                     </image></ImageView>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</GridPane>
