@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
-import java.io.BufferedOutputStream;
 import java.io.PrintWriter;
 
 public class Controller {
@@ -69,6 +68,13 @@ public class Controller {
 		shell.setCenterX(enemyShip.getLayoutX() + enemyShip.getFitWidth() / 2.7);
 		shell.setCenterY(enemyShip.getLayoutY() + enemyShip.getFitHeight());
 		pane.getChildren().addAll(shell);
+		Shell sh = new Shell();
+		sh.xProperty().bindBidirectional(shell.centerXProperty());
+		sh.yProperty().bindBidirectional(shell.centerYProperty());
+		sh.targetXProperty().bindBidirectional(yourShip.layoutXProperty());
+		sh.targetYProperty().bindBidirectional(yourShip.layoutYProperty());
+		HitListener hl = new HitListener(sh, this);
+		hl.start();
 		KeyValue kv = new KeyValue(shell.centerYProperty(), shell.getCenterY() + 300);
 		KeyFrame kf = new KeyFrame(Duration.seconds(5), kv);
 		Timeline tm = new Timeline(kf);
@@ -90,6 +96,10 @@ public class Controller {
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.1), kv);
 		Timeline tm = new Timeline(kf);
 		tm.play();
+	}
+
+	public void hit(){
+		you.setHealth(you.getHealth() - 1);
 	}
 
 	public void setWriter(PrintWriter writer) {

@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.Platform;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,13 +24,28 @@ public class EnemyActions extends Thread{
 				String command = br.readLine();
 				switch (command){
 					case "shoot":
-						controller.enemyShoot();
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								controller.enemyShoot();
+							}
+						});
 						break;
 					case "right":
-						controller.enemyGoRight();
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								controller.enemyGoRight();
+							}
+						});
 						break;
 					case "left":
-						controller.enemyGoLeft();
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								controller.enemyGoLeft();
+							}
+						});
 						break;
 				}
 			}
