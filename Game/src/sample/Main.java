@@ -18,6 +18,7 @@ public class Main extends Application {
 	private Socket socket;
 	private final String host = "localhost";
 	private final int port = 1234;
+	private static boolean end = false;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -31,15 +32,17 @@ public class Main extends Application {
         primaryStage.show();
 	    primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 		    @Override
-		    public void handle(KeyEvent event) {
-			    if(event.getCode().equals(KeyCode.SPACE)){
-				    controller.shoot();
-			    }
-			    if(event.getCode().equals(KeyCode.RIGHT)){
-			    	controller.goRight();
-			    }
-			    if(event.getCode().equals(KeyCode.LEFT)){
-				    controller.goLeft();
+		    public void handle (KeyEvent event){
+			    if(!end) {
+				    if (event.getCode().equals(KeyCode.SPACE)) {
+					    controller.shoot();
+				    }
+				    if (event.getCode().equals(KeyCode.RIGHT)) {
+					    controller.goRight();
+				    }
+				    if (event.getCode().equals(KeyCode.LEFT)) {
+					    controller.goLeft();
+				    }
 			    }
 		    }
 	    });
@@ -50,6 +53,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static void isEnded(boolean value){
+    	end = value;
     }
 
 	public static void setController(Controller c) {

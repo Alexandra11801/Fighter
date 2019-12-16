@@ -47,6 +47,22 @@ public class EnemyActions extends Thread{
 							}
 						});
 						break;
+					case "hit":
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								controller.enemyHit();
+							}
+						});
+						break;
+					case "defeat":
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								controller.enemyDefeat();
+							}
+						});
+						break;
 				}
 			}
 		}

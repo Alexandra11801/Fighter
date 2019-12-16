@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.*;
 import javafx.fxml.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -28,6 +29,8 @@ public class Controller {
 		enemy = new Player();
 		yourHealth.textProperty().bind(you.healthProperty().asString());
 		enemyHealth.textProperty().bind(enemy.healthProperty().asString());
+		DefeatListener dl = new DefeatListener(this, you);
+		dl.start();
 		Main.setController(this);
 	}
 
@@ -69,10 +72,11 @@ public class Controller {
 		shell.setCenterY(enemyShip.getLayoutY() + enemyShip.getFitHeight());
 		pane.getChildren().addAll(shell);
 		Shell sh = new Shell();
-		sh.xProperty().bindBidirectional(shell.centerXProperty());
-		sh.yProperty().bindBidirectional(shell.centerYProperty());
-		sh.targetXProperty().bindBidirectional(yourShip.layoutXProperty());
-		sh.targetYProperty().bindBidirectional(yourShip.layoutYProperty());
+		sh.xProperty().bind(shell.centerXProperty());
+		sh.yProperty().bind(shell.centerYProperty());
+		sh.targetXProperty().bind(yourShip.layoutXProperty());
+		sh.targetYProperty().bind(yourShip.layoutYProperty());
+		sh.setShell(shell);
 		HitListener hl = new HitListener(sh, this);
 		hl.start();
 		KeyValue kv = new KeyValue(shell.centerYProperty(), shell.getCenterY() + 300);
@@ -99,7 +103,34 @@ public class Controller {
 	}
 
 	public void hit(){
+		writer.println("hit");
 		you.setHealth(you.getHealth() - 1);
+	}
+
+	public void enemyHit(){
+		enemy.setHealth(enemy.getHealth() - 1);
+	}
+
+	public void defeat(){
+		Main.isEnded(true);
+		writer.write("defeated");
+		System.out.println("defeated");
+		Label label = new Label("You lose!");
+		label.setPrefWidth(200);
+		label.setPrefHeight(50);
+		label.setLayoutX(50);
+		label.setLayoutY(100);
+		pane.getChildren().addAll(label);
+	}
+
+	public void enemyDefeat(){
+		Main.isEnded(true);
+		Label label = new Label("You won!");
+		label.setPrefWidth(200);
+		label.setPrefHeight(50);
+		label.setLayoutX(50);
+		label.setLayoutY(100);
+		pane.getChildren().addAll(label);
 	}
 
 	public void setWriter(PrintWriter writer) {

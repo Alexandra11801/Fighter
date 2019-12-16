@@ -18,6 +18,7 @@ public class PlayerThread extends Thread {
 			pw.println("start");
 			while (true) {
 				String command = br.readLine();
+				if(command != null) System.out.println(command);
 				switch (command) {
 					case "shoot":
 						pw.println("shoot");
@@ -27,6 +28,12 @@ public class PlayerThread extends Thread {
 						break;
 					case "left":
 						pw.println("right");
+						break;
+					case "hit":
+						pw.println("hit");
+						break;
+					case "defeated":
+						pw.println("defeated");
 						break;
 				}
 			}

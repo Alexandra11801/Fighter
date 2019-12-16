@@ -1,72 +1,81 @@
 package sample;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.shape.Circle;
 
 public class Shell {
 
-	private IntegerProperty x;
-	private IntegerProperty y;
-	private IntegerProperty targetX;
-	private IntegerProperty targetY;
+	private DoubleProperty x;
+	private DoubleProperty y;
+	private DoubleProperty targetX;
+	private DoubleProperty targetY;
+	private Circle shell;
 
 	public Shell(){
-		x = new SimpleIntegerProperty(0);
-		y = new SimpleIntegerProperty(0);
-		targetX = new SimpleIntegerProperty(0);
-		targetY = new SimpleIntegerProperty(0);
+		x = new SimpleDoubleProperty(0);
+		y = new SimpleDoubleProperty(0);
+		targetX = new SimpleDoubleProperty(0);
+		targetY = new SimpleDoubleProperty(0);
 	}
 
 	public double targetDistance(){
-		return Math.sqrt((x.get() - targetX.get()) * (x.get() - targetX.get()) + (y.get() - targetY.get()) * (y.get() - targetY.get()));
+		return Math.sqrt(Math.pow((targetX.get() + 68 / 2.7 - x.get()), 2)  + Math.pow((targetY.get() - y.get()), 2));
 	}
 
-	public int getX() {
+	public double getX() {
 		return x.get();
 	}
 
-	public IntegerProperty xProperty() {
+	public DoubleProperty xProperty() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x.set(x);
 	}
 
-	public int getY() {
+	public double getY() {
 		return y.get();
 	}
 
-	public IntegerProperty yProperty() {
+	public DoubleProperty yProperty() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y.set(y);
 	}
 
-	public int getTargetX() {
+	public double getTargetX() {
 		return targetX.get();
 	}
 
-	public IntegerProperty targetXProperty() {
+	public DoubleProperty targetXProperty() {
 		return targetX;
 	}
 
-	public void setTargetX(int targetX) {
+	public void setTargetX(double targetX) {
 		this.targetX.set(targetX);
 	}
 
-	public int getTargetY() {
+	public double getTargetY() {
 		return targetY.get();
 	}
 
-	public IntegerProperty targetYProperty() {
+	public DoubleProperty targetYProperty() {
 		return targetY;
 	}
 
-	public void setTargetY(int targetY) {
+	public void setTargetY(double targetY) {
 		this.targetY.set(targetY);
 	}
 
+	public Circle getShell() {
+		return shell;
+	}
+
+	public void setShell(Circle shell) {
+		this.shell = shell;
+	}
 }

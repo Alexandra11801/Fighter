@@ -11,7 +11,8 @@ public class HitListener extends Thread {
 	}
 
 	public void run(){
-		while(shell.targetDistance() > 0){ }
+		while(shell.targetDistance() > 7){ }
+		shell.getShell().setVisible(false);
 		controller.hit();
 	}
 
