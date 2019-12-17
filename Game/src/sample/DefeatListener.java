@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.Platform;
+
 public class DefeatListener extends Thread {
 
 	private Controller controller;
@@ -11,9 +13,20 @@ public class DefeatListener extends Thread {
 	}
 
 	public void run(){
-		while(player.getHealth() > 0){System.out.println(player.getHealth());}
-		System.out.println(player.getHealth() + ", defeated");
-		controller.defeat();
+		while(player.getHealth() > 0){
+			try {
+				Thread.sleep(1);
+			}
+			catch (InterruptedException e){
+				e.printStackTrace();
+			}
+		}
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				controller.defeat();
+			}
+		});
 	}
 
 	public Controller getController() {

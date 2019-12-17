@@ -84,7 +84,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Game_Server" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
@@ -194,7 +194,8 @@
       <workItem from="1575642217128" duration="4729000" />
       <workItem from="1576268434922" duration="4307000" />
       <workItem from="1576505403602" duration="8637000" />
-      <workItem from="1576524197258" duration="2322000" />
+      <workItem from="1576524197258" duration="2959000" />
+      <workItem from="1576609973412" duration="3474000" />
     </task>
     <servers />
   </component>

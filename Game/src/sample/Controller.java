@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.io.PrintWriter;
@@ -103,8 +104,10 @@ public class Controller {
 	}
 
 	public void hit(){
-		writer.println("hit");
-		you.setHealth(you.getHealth() - 1);
+		if(you.getHealth() > 0) {
+			writer.println("hit");
+			you.setHealth(you.getHealth() - 1);
+		}
 	}
 
 	public void enemyHit(){
@@ -113,12 +116,12 @@ public class Controller {
 
 	public void defeat(){
 		Main.isEnded(true);
-		writer.write("defeated");
-		System.out.println("defeated");
+		writer.println("defeated");
 		Label label = new Label("You lose!");
 		label.setPrefWidth(200);
 		label.setPrefHeight(50);
-		label.setLayoutX(50);
+		label.setFont(new Font(47));
+		label.setLayoutX(95);
 		label.setLayoutY(100);
 		pane.getChildren().addAll(label);
 	}
@@ -128,7 +131,8 @@ public class Controller {
 		Label label = new Label("You won!");
 		label.setPrefWidth(200);
 		label.setPrefHeight(50);
-		label.setLayoutX(50);
+		label.setFont(new Font(47));
+		label.setLayoutX(95);
 		label.setLayoutY(100);
 		pane.getChildren().addAll(label);
 	}

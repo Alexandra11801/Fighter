@@ -55,7 +55,7 @@ public class EnemyActions extends Thread{
 							}
 						});
 						break;
-					case "defeat":
+					case "defeated":
 						Platform.runLater(new Runnable() {
 							@Override
 							public void run() {
