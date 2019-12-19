@@ -35,6 +35,13 @@ public class Controller {
 		Main.setController(this);
 	}
 
+	public void initializeWithoutBinding(){
+		you = new Player();
+		enemy = new Player();
+		DefeatListener dl = new DefeatListener(this, you);
+		dl.start();
+		Main.setController(this);
+	}
 
 	public void shoot(){
 		writer.println("shoot");
@@ -42,6 +49,8 @@ public class Controller {
 		shell.setCenterX(yourShip.getLayoutX() + yourShip.getFitWidth() / 2.7);
 		shell.setCenterY(yourShip.getLayoutY());
 		pane.getChildren().addAll(shell);
+		HitListener hl = new HitListener(this, shell, enemyShip);
+		hl.start();
 		KeyValue kv = new KeyValue(shell.centerYProperty(), shell.getCenterY() - 300);
 		KeyFrame kf = new KeyFrame(Duration.seconds(5), kv);
 		Timeline tm = new Timeline(kf);
@@ -72,14 +81,13 @@ public class Controller {
 		shell.setCenterX(enemyShip.getLayoutX() + enemyShip.getFitWidth() / 2.7);
 		shell.setCenterY(enemyShip.getLayoutY() + enemyShip.getFitHeight());
 		pane.getChildren().addAll(shell);
-		Shell sh = new Shell();
-		sh.xProperty().bind(shell.centerXProperty());
-		sh.yProperty().bind(shell.centerYProperty());
-		sh.targetXProperty().bind(yourShip.layoutXProperty());
-		sh.targetYProperty().bind(yourShip.layoutYProperty());
-		sh.setShell(shell);
-		HitListener hl = new HitListener(sh, this);
-		hl.start();
+		try {
+			HitListener hl = new HitListener(this, shell, yourShip, this.getClass().getMethod("hit"));
+			hl.start();
+		}
+		catch (NoSuchMethodException e){
+			e.printStackTrace();
+		}
 		KeyValue kv = new KeyValue(shell.centerYProperty(), shell.getCenterY() + 300);
 		KeyFrame kf = new KeyFrame(Duration.seconds(5), kv);
 		Timeline tm = new Timeline(kf);
@@ -117,7 +125,7 @@ public class Controller {
 	public void defeat(){
 		Main.isEnded(true);
 		writer.println("defeated");
-		Label label = new Label("You lose!");
+		Label label = new Label("You lost!");
 		label.setPrefWidth(200);
 		label.setPrefHeight(50);
 		label.setFont(new Font(47));
@@ -140,4 +148,12 @@ public class Controller {
 	public void setWriter(PrintWriter writer) {
 		this.writer = writer;
 	}
+
+	public Player getYou(){
+		return you;
+	}
+	public Player getEnemy(){
+		return enemy;
+	}
+
 }

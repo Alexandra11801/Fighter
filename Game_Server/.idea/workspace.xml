@@ -23,9 +23,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/IntelliJ IDEA 2018.2.3/lib/hamcrest-core-1.3.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunDashboard">
@@ -69,6 +72,7 @@
       <workItem from="1576505381087" duration="2618000" />
       <workItem from="1576524183002" duration="1613000" />
       <workItem from="1576610027653" duration="1539000" />
+      <workItem from="1576769208124" duration="3801000" />
     </task>
     <servers />
   </component>

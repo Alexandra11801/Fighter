@@ -4,8 +4,6 @@ public class Room extends Thread {
 
 	private Socket socket1;
 	private Socket socket2;
-	private PlayerThread player1;
-	private PlayerThread player2;
 
 	public Room(Socket socket1, Socket socket2) {
 		this.socket1 = socket1;
